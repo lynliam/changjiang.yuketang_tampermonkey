@@ -6,7 +6,8 @@
 // @author       Lyn Liam
 // @match        https://changjiang.yuketang.cn/v2/web/*
 // @icon         https://www.google.com/s2/favicons?domain=yuketang.cn
-// @require      https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js
+// @require      https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/jquery/3.4.1/jquery.min.js
+// @source       https://github.com/lynliam/changjiang.yuketang_tampermonkey
 // @grant        none
 // @license MIT
 // ==/UserScript==
