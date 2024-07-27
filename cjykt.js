@@ -145,6 +145,7 @@
                     },3000);
                     return false;
                 }
+
                 // 读未读的图文
                 if(a_list[i].lastChild.innerText === "未读"){
                     console.log(i+'---'+a_list[i].lastChild.innerText);
@@ -160,6 +161,50 @@
                     },2000);
                     return false;
                 }
+
+                // 进行未发言的讨论
+                if (a_list[i].lastChild.innerText === "未发言" || a_list[i].lastChild.innerText === " 未发言"){
+                    console.log(i+'---'+a_list[i].lastChild.innerText);
+                    a_list[i].click();
+                    setTimeout(function(){
+                        let content = "good";
+                        let text_element = $("textarea.el-textarea__inner")[0];
+                        let button_element = $("button.el-button")[0];
+
+                        text_element.value = content;
+                        // 创建一个 input 事件
+                        let inputEvent = new Event('input', {
+                            bubbles: true,
+                            cancelable: true,
+                        });
+
+                        // 创建一个 change 事件
+                        let changeEvent = new Event('change', {
+                            bubbles: true,
+                            cancelable: true,
+                        });
+
+                        // 触发 input 事件
+                        text_element.dispatchEvent(inputEvent);
+
+                        // 触发 change 事件
+                        text_element.dispatchEvent(changeEvent);
+                        setTimeout(()=>{
+                            button_element.click();
+                        }, 1000);
+
+                        console.log("已发言完毕");
+
+                        setTimeout(function () {
+                            window.history.back();
+                            setTimeout(function(){
+                                window.parent.location.reload();
+                            }, 1500);
+                        }, 1000);
+                    }, 3000);
+                    return false;
+                }
+
                 // 判断如果最后一条并且为已完成或已读 结束任务
                 if(i===a_list.length-1 && (a_list[i].lastChild.innerText === "已完成" || a_list[i].lastChild.innerText === "已读")){
                     // window.history.back(-1);
